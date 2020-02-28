@@ -15,6 +15,6 @@ public class MainActivity extends AppCompatActivity {
         TextView text = new TextView(this);
         text = findViewById(R.id.text);
 
-        text.setText("je veux mourir.");
+        text.setText("exemple pour tom.");
     }
 }
