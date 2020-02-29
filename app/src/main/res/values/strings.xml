@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ProjetAppliMobile</string>
+    <string name="test_string">Bienvenue dans notre application</string>
 </resources>
