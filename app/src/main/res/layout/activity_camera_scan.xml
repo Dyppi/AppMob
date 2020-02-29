@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListeProduits">
+    tools:context=".CameraScan">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="296dp"
-        android:layout_height="98dp"
-        android:text="Vous étes bien dans la liste des produits, il n'y a rien à faire pour l'instant"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="144dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
