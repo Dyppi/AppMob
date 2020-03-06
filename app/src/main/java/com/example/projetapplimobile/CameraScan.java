@@ -3,6 +3,7 @@ package com.example.projetapplimobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.zxing.Result;
 
@@ -22,6 +23,8 @@ public class CameraScan extends AppCompatActivity implements ZXingScannerView.Re
     @Override
     public void handleResult(Result result) { //c'est ce qui se passe lorsque nous avons trouvé un résultat
         ScanCodeActivity.resultat.setText(result.getText());
+        ScanCodeActivity.layout.setVisibility(View.VISIBLE);
+        //ScanCodeActivity.boutonAjouter.setVisibility(View.VISIBLE);
         onBackPressed();
     }
 
