@@ -20,7 +20,7 @@ public class CameraScan extends AppCompatActivity implements ZXingScannerView.Re
     }
 
     @Override
-    public void handleResult(Result result) {
+    public void handleResult(Result result) { //c'est ce qui se passe lorsque nous avons trouvé un résultat
         ScanCodeActivity.resultat.setText(result.getText());
         onBackPressed();
     }
