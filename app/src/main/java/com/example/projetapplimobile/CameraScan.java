@@ -22,6 +22,7 @@ public class CameraScan extends AppCompatActivity implements ZXingScannerView.Re
 
     @Override
     public void handleResult(Result result) { //c'est ce qui se passe lorsque nous avons trouvé un résultat
+        //https://world.openfoodfacts.org/api/v0/product/737628064502.json?fields=product_name_en,product_name_fr
         ScanCodeActivity.resultat.setText(result.getText());
         ScanCodeActivity.layout.setVisibility(View.VISIBLE);
         //ScanCodeActivity.boutonAjouter.setVisibility(View.VISIBLE);
