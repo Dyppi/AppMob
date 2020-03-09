@@ -37,13 +37,16 @@ public class JSONText extends AsyncTask<String, String, String> {
 
             String finalJson = buffer.toString();
             JSONObject parentObject = new JSONObject(finalJson);
-          /*  JSONArray parentArray = parentObject.getJSONArray("product");
+            //System.out.println("***************************************************************************************************************************");
+            // System.out.println(parentObject.toString());
+            //JSONObject product = parentObject.getJSONObject("product");
 
-            JSONObject finalObject = parentArray.getJSONObject(0);
-            String productNameFr = finalObject.getString("product_name_fr");
-            //String productNameEn = finalObject.getString("product_name_en");*/
+            //JSONObject finalObject = parentArray.getJSONObject(0);
+            //String productNameFr = finalObject.getString("product_name_fr");
+            //String productNameEn = finalObject.getString("product_name_en");
 
-
+            CameraScan.json = parentObject.toString();
+            CameraScan.isRecuperer = true;
             return parentObject.toString();
 
 
@@ -71,7 +74,7 @@ public class JSONText extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String result) {
+        //System.out.println("///////////////////////////////////////////////////////////////////////////////////////////////");
         super.onPostExecute(result);
-        MainActivity.json.setText(result);
     }
 }

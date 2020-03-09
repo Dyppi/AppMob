@@ -38,7 +38,7 @@ public class ChoixDeLaDate extends AppCompatActivity {
         this.calendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String newdate = dayOfMonth + "/" + month + "/" + year;
+                String newdate = dayOfMonth + "/" + (month+1) + "/" + year;
                 ScanCodeActivity.date.setText(newdate);
                 mydate.setText(newdate);
             }
