@@ -75,7 +75,7 @@ public class ScanCodeActivity extends AppCompatActivity {
                     String nomProduit = (String) resultat.getText();
                     Date dateL = sdf.parse((String) date.getText());
 
-                    MainActivity.database.insertProduit(nomProduit, dateL);
+                    MainActivity.database.insertProduit(nomProduit, dateL, (String) date.getText());
 
                     Toast.makeText(getApplicationContext(),"c'est bon",Toast.LENGTH_LONG).show();
 

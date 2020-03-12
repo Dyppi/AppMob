@@ -24,7 +24,8 @@ public class Database extends SQLiteOpenHelper {
                         "   idProduit integer primary key autoincrement," +
                         "   nomProduit text not null," +
                         "   date_ajout integer not null," +
-                        "   date_limite integer not null" +
+                        "   date_limite integer not null," +
+                        "   stringDate text not null" +
                         ")";
 
         sqLiteDatabase.execSQL(strSql);
@@ -36,17 +37,25 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public void insertProduit(String name, Date date_Limite){
+    public void insertProduit(String name, Date date_Limite, String date){
         name = name.replace("'", "''");
-        String strSql = "insert into T_Produits (nomProduit, date_ajout, date_limite) values ('"
-                        + name + "', " + new Date().getTime() + ", " + date_Limite.getTime() + ")";
+        String strSql = "insert into T_Produits (nomProduit, date_ajout, date_limite, stringDate) values ('"
+                        + name + "', " + new Date().getTime() + ", " + date_Limite.getTime() + ", '" + date + "')";
 
         this.getWritableDatabase().execSQL(strSql);
         Log.i("DATABASE", "insertion a ete invoque");
     }
 
-    public void supprimerProduit(){
+    public void supprimerProduits(){
         String strSql = "delete from T_Produits";
+
+        this.getWritableDatabase().execSQL(strSql);
+        Log.i("DATABASE", "insertion a ete invoque");
+    }
+
+    public void supprimerProduit(String nom, String date){
+        String strSql = "delete from T_Produits where nomProduit='" +
+                        nom + "' and stringDate='" + date  + "'" ;
 
         this.getWritableDatabase().execSQL(strSql);
         Log.i("DATABASE", "insertion a ete invoque");
@@ -64,7 +73,7 @@ public class Database extends SQLiteOpenHelper {
             dataA.setTime(cursor.getInt(2));
             Date dataL = new Date();
             dataL.setTime(cursor.getInt(3));
-            Produit produit = new Produit(cursor.getString(1),dataL, dataA);
+            Produit produit = new Produit(cursor.getString(1),dataL, dataA, cursor.getString(4));
 
             produits.add(produit);
             cursor.moveToNext();

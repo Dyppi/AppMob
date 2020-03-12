@@ -15,19 +15,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        >
+        tools:ignore="InvalidId">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/nomProduit"
             android:textSize="20dp" />
 
-        <TextClock
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nomProduit"
             android:id="@+id/jourRestant"
             android:textSize="20dp"
              />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image"
+            android:text="x"
+            />
     </RelativeLayout>
 </LinearLayout>
