@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         database = new Database(this);
-
+        database.supprimerProduit();
         this.scan = (Button) findViewById(R.id.buttonScan);
         this.liste = (Button) findViewById(R.id.buttonListe);
 

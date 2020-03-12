@@ -33,4 +33,16 @@ public class Produit {
     public String toString(){
         return nom + " : " + date_ajout + " : " + date_limite;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public Date getDate_ajout() {
+        return date_ajout;
+    }
+
+    public Date getDate_limite() {
+        return date_limite;
+    }
 }
