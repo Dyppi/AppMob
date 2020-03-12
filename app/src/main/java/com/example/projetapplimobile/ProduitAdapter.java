@@ -43,19 +43,19 @@ public class ProduitAdapter extends BaseAdapter {
 
         Produit currentItem = (Produit) getItem(i);
         String produitNom = currentItem.getNom();
-        Date date_Fin = currentItem.getDate_limite();
+        String date = currentItem.getDate();
 
         TextView textNomView = view.findViewById(R.id.nomProduit);
         textNomView.setText(produitNom);
 
-        TextClock textDateView = view.findViewById(R.id.jourRestant);
+        TextView textDateView = view.findViewById(R.id.jourRestant);
 
-        setDate(textDateView);
+        textDateView.setText(date);
 
         return view;
     }
 
     public void setDate(TextView textView){
-        String date = String.format("%tc",new Date());
+
     }
 }
