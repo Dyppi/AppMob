@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextClock;
 import android.widget.TextView;
 
@@ -55,7 +56,9 @@ public class ProduitAdapter extends BaseAdapter {
         return view;
     }
 
-    public void setDate(TextView textView){
-
+    public class ViewHolder{
+          TextView nom;
+          TextView date;
+          Button supprimer;
     }
 }
