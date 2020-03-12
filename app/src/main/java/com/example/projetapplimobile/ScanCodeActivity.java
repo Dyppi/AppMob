@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ScanCodeActivity extends AppCompatActivity {
 
@@ -45,6 +50,29 @@ public class ScanCodeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ScanCodeActivity.this, ChoixDeLaDate.class));
                 boutonDate.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        boutonAjouter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+
+                try {
+                    String nomProduit = (String) resultat.getText();
+                    Date dateL = sdf.parse((String) date.getText());
+
+                    MainActivity.database.insertProduit(nomProduit, dateL);
+
+                    Toast.makeText(getApplicationContext(),"c'est bon",Toast.LENGTH_LONG).show();
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+
             }
         });
 

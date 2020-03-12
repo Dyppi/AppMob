@@ -3,30 +3,33 @@ package com.example.projetapplimobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button scan;
     private Button liste;
 
+    public static Database database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        database = new Database(this);
 
         this.scan = (Button) findViewById(R.id.buttonScan);
         this.liste = (Button) findViewById(R.id.buttonListe);
@@ -45,15 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ListeProduits.class));
             }
         });
-
-       /* this.scan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new JSONText().execute("https://world.openfoodfacts.org/api/v0/product/5050083501661.json?fields=product_name_en,product_name_fr");
-            }
-        });*/
-
-
 
     }
 }
