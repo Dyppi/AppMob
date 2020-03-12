@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -25,6 +26,10 @@ public class ChoixDeLaDate extends AppCompatActivity {
         calendrier = (CalendarView) findViewById(R.id.calendarView);
         mydate = (TextView) findViewById(R.id.calenderDate);
 
+        if(savedInstanceState != null) {
+            this.mydate.setText(savedInstanceState.getString("date"));
+        }
+
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,5 +48,12 @@ public class ChoixDeLaDate extends AppCompatActivity {
                 mydate.setText(newdate);
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+
+        outState.putString("date", this.mydate.getText().toString());
+        super.onSaveInstanceState(outState);
     }
 }

@@ -1,10 +1,12 @@
 package com.example.projetapplimobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -33,10 +35,20 @@ public class ScanCodeActivity extends AppCompatActivity {
         this.bouton = (Button) findViewById(R.id.button);
         this.boutonAjouter = (Button) findViewById(R.id.boutonAjouter);
         this.layout = (ConstraintLayout) findViewById(R.id.layout);
-        //this.calendrier = (CalendarView) findViewById(R.id.calendarView);
         this.boutonDate = (Button) findViewById(R.id.boutonDate);
-
         date = (TextView) findViewById(R.id.date);
+
+        if(savedInstanceState != null) {
+            resultat.setText(savedInstanceState.getString("resultat"));
+            layout.setVisibility(savedInstanceState.getInt("LayoutVisibilityState"));
+            boutonAjouter.setVisibility(savedInstanceState.getInt("AjouterVisibilityState"));
+            boutonDate.setVisibility(savedInstanceState.getInt("BoutonDateVisibilityState"));
+            date.setVisibility(savedInstanceState.getInt("AjouterVisibilityState"));
+            date.setText(savedInstanceState.getString("date"));
+            //System.out.println("+++++++++++++++++++++++++++++++++++++++++++++ " + savedInstanceState.getString("date"));
+        }
+
+
 
         bouton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,5 +88,16 @@ public class ScanCodeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("resultat", resultat.getText().toString());
+        outState.putInt("LayoutVisibilityState", layout.getVisibility());
+        outState.putInt("AjouterVisibilityState", boutonAjouter.getVisibility());
+        outState.putInt("BoutonDateVisibilityState", boutonDate.getVisibility());
+        outState.putInt("DateVisibilityState", date.getVisibility());
+        outState.putString("date", date.getText().toString());
+        super.onSaveInstanceState(outState);
     }
 }
