@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button scan;
     private Button liste;
 
-    private Database database;
+    public static Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

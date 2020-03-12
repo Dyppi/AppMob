@@ -16,8 +16,17 @@ public class Produit {
         this.date_ajout = new Date();
     }
 
-    public int nb_JourRestant(){
-        return 
+    public Produit(String nom, Date date_limite, Date date_ajout){
+        this.nom = nom;
+        this.date_ajout = date_ajout;
+        this.date_limite = date_limite;
+        this.date_ajout = new Date();
+    }
+
+    public long nb_JourRestant(){
+        long diff = date_limite.getTime() - date_ajout.getTime();
+
+        return (diff / (1000 * 60 * 60 * 24));
     }
 
     @Override

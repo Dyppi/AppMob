@@ -1,11 +1,14 @@
 package com.example.projetapplimobile;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NOM = "produits.db";
@@ -33,12 +36,41 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public void insertProduit(String name, Date date_ajout , Date date_Limite){
+    public void insertProduit(String name, Date date_Limite){
         name = name.replace("'", "''");
         String strSql = "insert into T_Produits (nomProduit, date_ajout, date_limite) values ('"
-                        + name + "', " + date_ajout.getTime() + ", " + date_Limite.getTime() + ")";
+                        + name + "', " + new Date().getTime() + ", " + date_Limite.getTime() + ")";
 
         this.getWritableDatabase().execSQL(strSql);
         Log.i("DATABASE", "insertion a ete invoque");
+    }
+
+    public void supprimerProduit(int idProduit){
+        String strSql = "delete from T_Produits where idProduit=" + idProduit;
+
+        this.getWritableDatabase().execSQL(strSql);
+        Log.i("DATABASE", "insertion a ete invoque");
+    }
+
+    public List<Produit> tousProduits(){
+        List<Produit> produits = new ArrayList<>();
+
+        String strSql = "select * from T_Produits order by idProduit";
+        Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
+        cursor.moveToFirst();
+
+        while(! cursor.isAfterLast()){
+            Date dataA = new Date();
+            dataA.setTime(cursor.getInt(2));
+            Date dataL = new Date();
+            dataL.setTime(cursor.getInt(3));
+            Produit produit = new Produit(cursor.getString(1),dataL, dataA);
+
+            produits.add(produit);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return produits;
     }
 }

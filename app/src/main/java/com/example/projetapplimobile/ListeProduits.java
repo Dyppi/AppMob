@@ -13,17 +13,21 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListeProduits extends AppCompatActivity {
-    private static final String FILE_NAME = "produit.txt";
-    private static final String SEPARATEUR = ";;";
-
+    private TextView AffichageProduits;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_produits);
 
+        AffichageProduits = (TextView) findViewById(R.id.textView3);
 
+        List<Produit> produits = MainActivity.database.tousProduits();
+        for (Produit p: produits){
+            AffichageProduits.append(p.toString());
+        }
 
     }
 
