@@ -46,12 +46,12 @@ public class Database extends SQLiteOpenHelper {
         Log.i("DATABASE", "insertion a ete invoque");
     }
 
-    public void supprimerProduits(){
-        String strSql = "delete from T_Produits";
-
-        this.getWritableDatabase().execSQL(strSql);
-        Log.i("DATABASE", "insertion a ete invoque");
-    }
+//    public void supprimerProduits(){
+//        String strSql = "delete from T_Produits";
+//
+//        this.getWritableDatabase().execSQL(strSql);
+//        Log.i("DATABASE", "insertion a ete invoque");
+//    }
 
     public void supprimerProduit(String nom, String date){
         String strSql = "delete from T_Produits where nomProduit='" +
