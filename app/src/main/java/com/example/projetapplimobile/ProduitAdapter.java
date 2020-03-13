@@ -1,6 +1,7 @@
 package com.example.projetapplimobile;
 
 import android.content.Context;
+import android.net.sip.SipSession;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,8 +51,16 @@ public class ProduitAdapter extends BaseAdapter {
         textNomView.setText(produitNom);
 
         TextView textDateView = view.findViewById(R.id.jourRestant);
-
         textDateView.setText(date);
+
+        Button boutonSupp = view.findViewById(R.id.buttonSupprProduit);
+        boutonSupp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //MainActivity.database.supprimerProduit(produitNom, date);
+            }
+        });
+
 
         return view;
     }

@@ -68,22 +68,22 @@ public class ScanCodeActivity extends AppCompatActivity {
         boutonAjouter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 
-                try {
-                    String nomProduit = (String) resultat.getText();
-                    Date dateL = sdf.parse((String) date.getText());
+            try {
+                String nomProduit = (String) resultat.getText();
+                Date dateL = sdf.parse((String) date.getText());
 
-                    MainActivity.database.insertProduit(nomProduit, dateL, (String) date.getText());
+                MainActivity.database.insertProduit(nomProduit, dateL, (String) date.getText());
 
-                    Toast.makeText(getApplicationContext(),"c'est bon",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"c'est bon",Toast.LENGTH_LONG).show();
 
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
-
+            onBackPressed();
 
             }
         });
